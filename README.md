@@ -7,7 +7,7 @@ In this code pattern, you will learn to build a machine learning model with no c
 IBM Services used in the code pattern:
 * IBM Cloud Pak for Data
   * Watson Studio
-  * Watson Guided ML (Modeler Flow)
+  * Watson SPSS Modeler
   * Watson Machine Learning
 
 AWS Services used in the code pattern:
@@ -25,7 +25,7 @@ Once you complete the code pattern, you will learn to:
 * Create an event notification for the S3 bucket to trigger functions on adding data to the bucket.
 * Create IAM Roles to AWS Services.
 * Create a Lambda producer function to encrypt the data from S3 bucket and send it to Amazon Kinesis.
-* Create a Machine Learning model using Guided ML (Modeler Flow) on IBM Cloud Pak for Data.
+* Create a Machine Learning model using SPSS Modeler on IBM Cloud Pak for Data.
 * Deploy the Machine Learning model on IBM Cloud Pak for Data Watson Machine learning and get the APIs to Invoke the model.
 * Create a Lambda consumer function to decrypt the streaming data from Amazon Kinesis and send it to the model to get predictions.
 * View the real-time predections from IBM Cloud Pak for Data Watson Machine Learning in Amazon CloudWatch.
@@ -36,7 +36,7 @@ Once you complete the code pattern, you will learn to:
 
 1. Healthcare data is dumped into a S3 bucket on AWS.
 1. A producer lambda function is triggered to encrypt the data and stream it to AWS Kinesis.
-1. A machine learning model is trained in IBM Cloud pak for Data Watson Studio using Guided ML (Modeler Flow) and the model is deployed in Watson Studio Machine Learning.
+1. A machine learning model is trained in IBM Cloud pak for Data Watson Studio using SPSS Modeler and the model is deployed in Watson Studio Machine Learning.
 1. A consumer lambda function reads the data from kinesis streams.
 1. The consumer function invokes the model from Watson Studio Machine Learning with the data received from kinesis streams.
 1. The data streamed from the kinesis along with the predictions received from the Watson Studio Machine Learning are then visualized in AWS CloudWatch.
@@ -231,7 +231,7 @@ Follow the steps to build a machine learning model using Guided ML:
   * You can view the Datasets by selecting the **Assets** tab within the project.
     ![Dataset Upload](doc/source/images/datasetuploaded.png)
 
-* Create a Modeler flow.
+* Create a SPSS Modeler Flow.
   * From within the project that you have created, click on **Add to project** on the top right. Select **Modeler flow**.
   * Select **From File** tab on top.
   * Click on **browse** and upload the `heart_attack_modeler_flow.str` file.
@@ -240,7 +240,7 @@ Follow the steps to build a machine learning model using Guided ML:
     ![Modeler Flow](doc/source/images/modelerflow.png)
 
 * Import the datasets in the Modeler Flow.
-  * Double click on the `heart.csv` node in the **Import datasets** block in the Modeler flow.
+  * Double click on the `heart.csv` node in the **Import datasets** block in the SPSS Modeler Flow.
 
     ![Import Data](doc/source/images/importdataset.png)
   * A Data Asset panel will appear. Click on **Select data asset**.
@@ -271,8 +271,8 @@ Follow the steps to build a machine learning model using Guided ML:
 
 #### STEP 2: Data Preparation, Build and export Model
 
-* You need to load the merged dataset into the Modeler flow.
-  * Double click on the `heart_o2_merged.csv` node in the **Data Preparation** block in the Modeler flow.
+* You need to load the merged dataset into the SPSS Modeler Flow.
+  * Double click on the `heart_o2_merged.csv` node in the **Data Preparation** block in the SPSS Modeler Flow.
 
     ![Import Data](doc/source/images/importmergeddataset.png)
 
@@ -286,7 +286,7 @@ Follow the steps to build a machine learning model using Guided ML:
 
   * Leave the **File formatting settings** as default and click on **Save**.
 
-* Once the Dataset is injested in the Modeler flow, 60% of the data is split into training data named as `X_Train` and `Y_Train`. The remaining 40% of the data is split into testing data named as `X_Test` and `Y_Test`.
+* Once the Dataset is injested in the SPSS Modeler Flow, 60% of the data is split into training data named as `X_Train` and `Y_Train`. The remaining 40% of the data is split into testing data named as `X_Test` and `Y_Test`.
 
 * `X_Train` and `X_Test` are the input features and `Y_Train` and `Y_Test` are the target variables for the training and testing data.
 
@@ -296,7 +296,7 @@ Follow the steps to build a machine learning model using Guided ML:
     ![Run Node](doc/source/images/runxtest.png)
 
 * Finally, build the model.
-  * Click on the `Build Model` node in the **Model Building** block in the Modeler flow. Click on the three dots icon and select **Run**.
+  * Click on the `Build Model` node in the **Model Building** block in the SPSS Modeler Flow. Click on the three dots icon and select **Run**.
 
     ![Build Model](doc/source/images/buildmodel.png)
 
@@ -305,7 +305,7 @@ Follow the steps to build a machine learning model using Guided ML:
 #### STEP 3: Analyze the results
 
 * Once the model is built, you can evaluate the different models and their accuracy and other parameters.
-  * Click on the `Output` node in the **Output** block in the Modeler flow. Click on the three dots icon and select **View Model**.
+  * Click on the `Output` node in the **Output** block in the SPSS Modeler Flow. Click on the three dots icon and select **View Model**.
 
     ![View Model](doc/source/images/viewmodel.png)
 
@@ -340,7 +340,7 @@ Follow the steps to build a machine learning model using Guided ML:
         ![Random Trees](doc/source/images/randomtrees.png)
   
 * Aditionally, you can check the Target variable prediction with confidence scores.
-  * Double click on the `X_Test.csv` node in the **Data Preparation** block in the Modeler flow.
+  * Double click on the `X_Test.csv` node in the **Data Preparation** block in the SPSS Modeler Flow.
 
     ![Import Data](doc/source/images/importxtest.png)
 
@@ -354,7 +354,7 @@ Follow the steps to build a machine learning model using Guided ML:
 
   * Leave the **File formatting settings** as default and click on **Save**.
 
-  * Now select the `Actual vs Prediction` node in the **Output** block in the Modeler flow. Click on the three dots icon and select **Preview**.
+  * Now select the `Actual vs Prediction` node in the **Output** block in the SPSS Modeler Flow. Click on the three dots icon and select **Preview**.
 
     ![Actual vs Prediction](doc/source/images/actualvspredictedpreview.png)
   
@@ -365,7 +365,7 @@ Follow the steps to build a machine learning model using Guided ML:
 #### Step 4: Save the model to the project
 
 * Now that you have successfully built the model and evaluated its accuracy, you can save the model to the project.
-  * Click on the `Save Predictions` node in the **Output model** block in the Modeler flow. Click on the three dots icon and select **Run**.
+  * Click on the `Save Predictions` node in the **Output model** block in the SPSS Modeler Flow. Click on the three dots icon and select **Run**.
 
     ![Run Node](doc/source/images/saveprediction.png)
 
@@ -627,7 +627,7 @@ Follow the steps to view the predeictions in real-time,
 
 ## Summary
 
-In this code pattern, you learnt how to build a machine learning model with no code using Guided ML (Modeler Flow) on IBM Cloud Pak for Data, create a streaming flow using Amazon Kinesis on AWS Cloud and invoke the model using AWS Lambda function to get predictions and view in real-time on Amazon CloudWatch.
+In this code pattern, you learnt how to build a machine learning model with no code using SPSS Modeler on IBM Cloud Pak for Data, create a streaming flow using Amazon Kinesis on AWS Cloud and invoke the model using AWS Lambda function to get predictions and view in real-time on Amazon CloudWatch.
 
 ## Future scope
 This code pattern can be further extended by visualizing the results using IBM Cloud Pak for Data Embedded Dashboard.
