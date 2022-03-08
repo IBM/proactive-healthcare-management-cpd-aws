@@ -10,6 +10,7 @@ Proactive Healthcare management system with AWS Kinesis and IBM Cloud pak for Da
 * [Manoj Jahgirdar](https://developer.ibm.com/profiles/manoj.jahgirdar)
 * [Rahul Reddy Ravipally](https://developer.ibm.com/profiles/raravi86)
 * [Srikanth Manne](https://developer.ibm.com/profiles/srikanth.manne)
+* [Balaji Kadambi](https://developer.ibm.com/profiles/bkadambi)
 * [Manjula Hosurmath](https://developer.ibm.com/profiles/mhosurma)
 
 # URLs
